@@ -1,8 +1,9 @@
 #!/bin/bash
 PS3="enter your choice: "
-select choice in "type 1 to creat database" "type 2 to list database" "type 3 to drop database" "type 4 to connect to database" 
+echo "======================================================================="
+select choice in "type 1 to creat database" "type 2 to list database" "type 3 to drop database" "type 4 to connect to database"
 do 
-case $REPLY in 
+case $REPLY in
 1) echo "enter new database name: "
    read dbname
    if [ ! -d ./database/"$dbname" ]
@@ -19,7 +20,6 @@ case $REPLY in
    	*) echo wrong name
    	;;
    	esac
-   	#mkdir ./database/"$dbname"
    else
    echo "this name is taken" 
    fi
@@ -31,6 +31,7 @@ case $REPLY in
    if [ -d ./database/"$rmname" ]
    then
    rm -r ./database/"$rmname"
+   echo "$rmname database was deleted"
    else
    echo "this name is not found"
    fi
@@ -39,7 +40,6 @@ case $REPLY in
    read cname
    if [ -d ./database/"$cname" ]
    then
-   #cd ./database/"$cname"
    . ./connect_menu.sh
    else
    echo "this name is not found"
@@ -48,4 +48,5 @@ case $REPLY in
 ;;
 *)break ;;
 esac
+echo "========================================================================"
 done
