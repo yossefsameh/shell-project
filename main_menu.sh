@@ -27,18 +27,18 @@ case $REPLY in
 2) ls -F ./database| grep / 
 ;;
 3) echo "enter name of database you want to remove"
-   read rmname
-   if [ -d ./database/"$rmname" ]
+   read dbrm
+   if [ -d ./database/"$dbrm" ]
    then
-   rm -r ./database/"$rmname"
-   echo "$rmname database was deleted"
+   rm -r ./database/"$dbrm"
+   echo "$dbrm database was deleted"
    else
    echo "this name is not found"
    fi
 ;;
 4) echo "enter name of database you want to connect"
-   read cname
-   if [ -d ./database/"$cname" ]
+   read dbcurr
+   if [ -d ./database/"$dbcurr" ]
    then
    . ./connect_menu.sh
    else

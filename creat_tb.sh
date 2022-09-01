@@ -1,11 +1,11 @@
 #!/bin/bash
 echo "enter the name of the new table: "
 read tbnm
-if [ ! -f ./database/$cname/"$tbnm" ]
+if [ ! -f ./database/$dbcurr/"$tbnm" ]
    then
-   touch ./database/$cname/"$tbnm"
+   touch ./database/$tbcurr/"$tbnm"
    else
    echo "this table is already exist"
 fi
-echo  name >> database/$cname/$tbnm
-echo  dtype >> database/$cname/$tbnm.tp
+echo  name >> database/$tbcurr/$tbnm
+echo  dtype >> database/$tbcurr/$tbnm.tp
