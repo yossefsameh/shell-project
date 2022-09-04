@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 echo "enter the name of the new table you want to insert in: "
 read tbin
 if [ ! -z $tbin ]
@@ -6,7 +6,7 @@ then
 if [ -f ./database/$dbcurr/"$tbin" ]
 then	
 	typeset -i fieldsnum=`awk -F: '{if(NR==1){print NF}}' ./database/$dbcurr/$tbin`
-	echo $fieldsnum	
+	#echo $fieldsnum	
 	for (( i=1; i<=$fieldsnum; i++ ))	
 	do
 		fieldin=`awk -F: -v"i=$i" '{if(NR==1){print $i}}' ./database/$dbcurr/$tbin`
@@ -19,12 +19,25 @@ then
 			then
 				if [ $i -eq 1 ]
 				then
-					fdata=$fvalue
+					#typeset -i rowsnum=`awk -F: 'END{print NR}' ./database/$dbcurr/$tbin`
+					#typeset -i recnum=(($rowsnum-2))
+					#3ayzen nshel awl 2 rows
+					cut -f1 -d: ./database/$dbcurr/$tbin|grep -w $fvalue
+					if [ ! $? -eq 0 ]
+					then	
+						fdata=$fvalue
+						echo $fieldin is inserted which is primary key
+						break
+					else
+						echo repeated primary key
+						echo "enter $fieldin which is primary key : "
+                                		read fvalue
+					fi
 				else
 					fdata=$fdata":"$fvalue
-				fi	
-				echo $fieldin is inserted
-				break	
+					echo $fieldin is inserted
+                                	break
+				fi		
 			else
 				echo $fieldin must be $fieldtype !!!
 				echo "enter $fieldin : "
