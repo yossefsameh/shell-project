@@ -22,15 +22,13 @@ if [ ! -f ./database/$dbcurr/"$tbnm" ]
 			then
 			echo "enter the name of field $i note that its primary key: "
 			read fname
-########################(taha)check constraints for fname
-			meta1=$fname 
 			PS3="enter datatype of field $i: "
                 	select choose in "int" "string"
                 	do
                 		case $REPLY in
                			1)ftype=int
 				#echo -n $name":" >> data/$1/$tbname;
-				
+
                 		break
                 		;;
                 		2)ftype=string
@@ -38,18 +36,16 @@ if [ ! -f ./database/$dbcurr/"$tbnm" ]
                 		;;
                 	esac
         		done
-			meta2=$ftype 
-			elif [[ $i -gt 1 ]] && [[ $i -le $nfields ]]
+
+		elif  [ $i -eq $nfields ]
 			then
 			echo enter the name of field $i: 
                         read fname
-########################(taha) check constraints for fname
-			meta1=$meta1":"$fname
 		  	PS3="enter datatype of field $i: "
                         select choose in "int" "string"
                         do
                                 case $REPLY in
-                                1)ftype=int
+                                1)echo nkbukbl
                                 break
                                 ;;
                                 2)ftype=string
@@ -57,14 +53,28 @@ if [ ! -f ./database/$dbcurr/"$tbnm" ]
                                 ;;
                         esac
                         done
-			meta2=$meta2":"$ftype	
+	
+
+		else
+			echo enter the name of field $i: 
+			read fname
+			PS3="enter datatype of field $i: "
+                        select choose in "int" "string"
+                        do
+                                case $REPLY in
+                                1)echo nkbukbl
+                                break
+                                ;;
+                                2)ftype=string
+                                break
+                                ;;
+                        esac
+                        done
 
 		fi 
 
 	done
-echo $meta1 >> ./database/$dbcurr/"$tbnm" 
-echo $meta2 >> ./database/$dbcurr/"$tbnm" 
-echo finished, table created successfully. going back to main menu
+echo finished
 
 else
 	echo "this table is already exist"

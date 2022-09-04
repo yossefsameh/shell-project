@@ -18,7 +18,7 @@ case $REPLY in
    echo "this table is not found"
    fi
 ;;
-4)
+4) . ./insert_tb.sh
 ;;
 5)
 ;;

@@ -11,10 +11,10 @@ case $REPLY in
    if [ ! -d ./database/"$dbname" ]
    then
    	case "$dbname" in
-   	+([[:upper:]])) mkdir ./database/"$dbname"
-   	;;
-   	+([[:lower:]])) mkdir ./database/"$dbname"
-   	;;
+   	#+([[:upper:]])) mkdir ./database/"$dbname"
+   	#;;
+   	#+([[:lower:]])) mkdir ./database/"$dbname"
+   	#;;
    	+([0-9])) echo name of data base can"'"t be a number
    	;;
    	+([A-Za-z0-9])) mkdir ./database/"$dbname"
