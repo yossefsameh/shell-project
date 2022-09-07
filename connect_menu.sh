@@ -20,7 +20,7 @@ case $REPLY in
 ;;
 4) . ./insert_tb.sh
 ;;
-5)
+5) . ./select_tb.sh
 ;;
 6)
 ;;
