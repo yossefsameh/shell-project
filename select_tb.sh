@@ -13,6 +13,7 @@ then
 	;;
 	2) typeset -i fieldsnum=`awk -F: '{if(NR==1){print NF}}' ./database/$dbcurr/$tbsel`
 		for (( i=1; i<=$fieldsnum; i++ ))	
+
 		do
 			fieldin=`awk -F: -v"i=$i" '{if(NR==1){print $i}}' ./database/$dbcurr/$tbsel`
 			echo "do you want to search by $fieldin (y/n): "
@@ -21,7 +22,9 @@ then
 			then
 				echo "enter a value for $fieldin to search by: "
 				read valuesel
-				sed '1,2d' ./database/$dbcurr/$tbsel|awk -F: -v"i=$i" '{if ($i=='$valuesel'){print $0}}'
+				#sed '1,2d' ./database/$dbcurr/$tbsel|awk -F: -v"i=$i" '{if ($i~'$valuesel')print $0}'
+				#awk -F: -v"i=$i" '{if( $i == '$valuesel' )print $0}' ./database/$dbcurr/$tbsel
+				awk -F: -v"i=$i" '{if( $'$i'=="'$valuesel'" )print $0}' ./database/$dbcurr/$tbsel
 				break
 			elif [[ $resp = "n" || "$resp" = "N" || "$resp" = "no" || "$resp" = "NO" ]]
 			then

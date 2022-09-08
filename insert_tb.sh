@@ -22,7 +22,7 @@ then
 					#typeset -i rowsnum=`awk -F: 'END{print NR}' ./database/$dbcurr/$tbin`
 					#typeset -i recnum=(($rowsnum-2))
 					#3ayzen nshel awl 2 rows
-					cut -f1 -d: ./database/$dbcurr/$tbin|grep -w $fvalue
+					cut -f1 -d: ./database/$dbcurr/$tbin|tail -n+3|grep -w $fvalue
 					if [ ! $? -eq 0 ]
 					then	
 						fdata=$fvalue
@@ -45,8 +45,8 @@ then
 			fi
 		done
 	done
-
-echo $fdata >> ./database/$dbcurr/"$tbnm" 
+#echo $fdata >> ./database/$dbcurr/"$tbnm"
+echo $fdata >> ./database/$dbcurr/"$tbin" 
 else
 	echo "this table isn't exist" 
 fi
