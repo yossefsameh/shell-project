@@ -53,3 +53,4 @@ fi
 else	
 	echo "empty table name"
 fi
+. ./connect_menu.sh

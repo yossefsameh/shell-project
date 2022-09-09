@@ -29,8 +29,10 @@ case $REPLY in
    else
    echo "empty database name"
    fi
+   . ./main_menu.sh
 ;;	
 2) ls -F ./database| grep / 
+      . ./main_menu.sh
 ;;
 4) echo "enter name of database you want to remove"
    read dbrm
@@ -46,6 +48,7 @@ case $REPLY in
    else
    echo "empty database name"
    fi
+   . ./main_menu.sh
 ;;
 3) echo "enter name of database you want to connect"
    read dbcurr
@@ -60,7 +63,6 @@ case $REPLY in
    else
    echo "empty database name"
    fi
-
 ;;
 5) break 2 ;;
 *)break ;;

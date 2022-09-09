@@ -16,23 +16,29 @@ then
 			then
 				echo "enter a value for $fieldin to delete its record(s): "
 				read valuedel
+				if [[ $valuedel = $fieldin ]]
+				then
+					echo can"'"t be deleted
+				        break	
+				else
 				#sed '1,2d' ./database/$dbcurr/$tbsel|awk -F: -v"i=$i" '{if ($i~'$valuesel')print $0}'
 				#awk -F: -v"i=$i" '{if( $i == '$valuesel' )print $0}' ./database/$dbcurr/$tbsel
-				awk -F: -v"i=$i" '{if( $'$i'!="'$valuedel'" )print $0}' ./database/$dbcurr/$tbdel > ./database/$dbcurr/tmp
-			        diff ./database/$dbcurr/$tbdel ./database/$dbcurr/tmp > ./op
-				if [ ! $? -eq 0 ]
-				then
-					mv ./database/$dbcurr/tmp ./database/$dbcurr/$tbdel
-					echo deleted	
+					awk -F: -v"i=$i" '{if( $'$i'!="'$valuedel'" )print $0}' ./database/$dbcurr/$tbdel > ./database/$dbcurr/tmp
+			        	diff ./database/$dbcurr/$tbdel ./database/$dbcurr/tmp > ./op
+					if [ ! $? -eq 0 ]
+						then
+						mv ./database/$dbcurr/tmp ./database/$dbcurr/$tbdel
+						echo deleted	
 				
-				else
-					rm ./database/$dbcurr/tmp
-					echo nothing is deleted
-				fi
+					else
+						rm ./database/$dbcurr/tmp
+						echo nothing is deleted
+					fi
+			        fi
 				break
 			elif [[ $resp = "n" || "$resp" = "N" || "$resp" = "no" || "$resp" = "NO" ]]
 			then
-				echo okay
+				echo skip
 			fi
 		done
 
@@ -56,3 +62,4 @@ fi
 else
 	echo "empty table name"
 fi
+. ./connect_menu.sh

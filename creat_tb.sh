@@ -22,7 +22,6 @@ if [ ! -f ./database/$dbcurr/"$tbnm" ]
 			then
 			echo "enter the name of field $i note that its primary key: "
 			read fname
-########################(taha)check constraints for fname
 			meta1=$fname 
 			PS3="enter datatype of field $i: "
                 	select choose in "int" "string"
@@ -43,7 +42,6 @@ if [ ! -f ./database/$dbcurr/"$tbnm" ]
 			then
 			echo enter the name of field $i: 
                         read fname
-########################(taha) check constraints for fname
 			meta1=$meta1":"$fname
 		  	PS3="enter datatype of field $i: "
                         select choose in "int" "string"

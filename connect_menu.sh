@@ -8,6 +8,7 @@ case $REPLY in
 1) . ./creat_tb.sh
 ;;
 2) ls ./database/$dbcurr
+   . ./connect_menu.sh
 ;;
 3) echo "enter name of table you want to remove"
    read tbrm
@@ -17,6 +18,7 @@ case $REPLY in
    else
    echo "this table is not found"
    fi
+   . ./connect_menu.sh
 ;;
 4) . ./insert_tb.sh
 ;;

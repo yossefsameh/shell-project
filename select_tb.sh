@@ -24,7 +24,7 @@ then
 				read valuesel
 				#sed '1,2d' ./database/$dbcurr/$tbsel|awk -F: -v"i=$i" '{if ($i~'$valuesel')print $0}'
 				#awk -F: -v"i=$i" '{if( $i == '$valuesel' )print $0}' ./database/$dbcurr/$tbsel
-				tail -n+3 ./database/$dbcurr/$tbsel|awk -F: -v"i=$i" '{if( $'$i'=="'$valuesel'" )print $0}'
+				tail -n+3 ./database/$dbcurr/$tbsel|awk -F: '{if( $'$i'=="'$valuesel'" )print $0}'
 				if [ $? -eq 0 ]
 				then
 					echo that"'"s it	
@@ -35,7 +35,7 @@ then
 				break
 			elif [[ $resp = "n" || "$resp" = "N" || "$resp" = "no" || "$resp" = "NO" ]]
 			then
-				echo okay
+				echo skip
 			fi
 		done
 	;;
