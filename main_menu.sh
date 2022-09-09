@@ -1,7 +1,7 @@
 #!/bin/bash
 PS3="enter your choice: "
 echo "======================================================================="
-select choice in "type 1 to creat database" "type 2 to list database" "type 3 to connect to database" "type 4 to drop database" "exit"
+select choice in "Creat database" "List database" "Connect to database" "Drop database" "Exit"
 do 
 case $REPLY in
 1) echo "enter new database name: "

@@ -2,7 +2,7 @@
 echo "====================================================================="
 echo "welcome to $dbcurr database"
 PS3="enter your choice for $dbcurr: "
-select choice in "type 1 to creat table" "type 2 to list tables" "type 3 to drop table" "type 4 to insert into table" "type 5 to select from table" "type 6 to delete from table" "type 7 toubdate table" "type 8 to back to Previous menu"
+select choice in "Creat table" "List tables" "Drop table" "Insert into table" "Select from table" "Delete from table" "Ubdate table" "Back to Previous menu"
 do
 case $REPLY in
 1) . ./creat_tb.sh
@@ -22,7 +22,7 @@ case $REPLY in
 ;;
 5) . ./select_tb.sh
 ;;
-6)
+6) . ./delete_fm_tb.sh
 ;;
 7)
 ;;

@@ -5,8 +5,8 @@ if [ ! -z $tbsel ]
 then
 if [ -f ./database/$dbcurr/"$tbsel" ]
 then
-	PS3="choose from select menu: "
-	select choice in "type 1 to select all" "type 2 to select part" "back to $dbcurr menu "
+	PS3="what do you want to select from table: "
+	select choice in "show  all table" "show specific record(s)" "back to $dbcurr menu "
 	do
 	case $REPLY in
 	1) sed '2d' ./database/$dbcurr/$tbsel
@@ -25,6 +25,13 @@ then
 				#sed '1,2d' ./database/$dbcurr/$tbsel|awk -F: -v"i=$i" '{if ($i~'$valuesel')print $0}'
 				#awk -F: -v"i=$i" '{if( $i == '$valuesel' )print $0}' ./database/$dbcurr/$tbsel
 				tail -n+3 ./database/$dbcurr/$tbsel|awk -F: -v"i=$i" '{if( $'$i'=="'$valuesel'" )print $0}'
+				if [ $? -eq 0 ]
+				then
+					echo that"'"s it	
+				
+				else
+					echo nothing to show
+				fi
 				break
 			elif [[ $resp = "n" || "$resp" = "N" || "$resp" = "no" || "$resp" = "NO" ]]
 			then
