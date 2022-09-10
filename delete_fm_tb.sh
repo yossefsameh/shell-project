@@ -5,7 +5,16 @@ if [ ! -z $tbdel ]
 then
 if [ -f ./database/$dbcurr/"$tbdel" ]
 then
+	PS3="what do you want to delete from table: "
+	select choice in "delete  all records" "delete specific record(s)" "back to $dbcurr menu "
+	do
+	case $REPLY in
+	1) sed -i '3,$d' ./database/$dbcurr/$tbdel >./op
+	   echo all records are deleted
+	;;
+	2)
 	typeset -i fieldsnum=`awk -F: '{if(NR==1){print NF}}' ./database/$dbcurr/$tbdel`
+		
 		for (( i=1; i<=$fieldsnum; i++ ))	
 
 		do
@@ -42,17 +51,12 @@ then
 			fi
 		done
 
-
-
-
-
-
-
-
-
-
-
-
+ 	;;
+	3). ./connect_menu.sh
+	;;
+	esac
+	echo "==================================================================="
+	done
 
 
 
