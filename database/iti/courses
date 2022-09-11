@@ -1,0 +1,4 @@
+name:desc:max_score
+string:string:int
+redhat:linux:100
+database:mysql:80

@@ -1,0 +1,3 @@
+ssn:name:goals:assists:team
+int:string:int:int:string
+1234:havertz:6:2:chelsea

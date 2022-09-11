@@ -62,7 +62,7 @@ if [ ! -f ./database/$dbcurr/"$tbnm" ]
 	done
 echo $meta1 >> ./database/$dbcurr/"$tbnm" 
 echo $meta2 >> ./database/$dbcurr/"$tbnm" 
-echo finished, table created successfully. going back to main menu
+echo finished, table created successfully. going back to menu
 
 else
 	echo "this table is already exist"

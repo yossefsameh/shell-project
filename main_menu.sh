@@ -17,7 +17,11 @@ case $REPLY in
    	#;;
    	+([0-9])) echo name of data base can"'"t be a number
    	;;
-   	+([A-Za-z0-9])) mkdir ./database/"$dbname"
+	[0-9]*) echo name can not start by number
+	;;
+	[_-]*) echo can not start by _ or -
+	;;
+	+([A-Za-z0-9,_,-])) mkdir ./database/"$dbname"
    	;;
    	*) echo wrong name
    	;;

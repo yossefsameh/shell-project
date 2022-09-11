@@ -10,8 +10,13 @@ then
 	for (( i=1; i<=$fieldsnum; i++ ))	
 	do
 		fieldin=`awk -F: -v"i=$i" '{if(NR==1){print $i}}' ./database/$dbcurr/$tbin`
-		echo "enter $fieldin : "
-	      	read fvalue
+		if [ $i = 1 ]
+		then
+			echo "enter $fieldin (primary key): "
+		else
+			echo "enter $fieldin : "
+		fi
+		read fvalue
 		fieldtype=`awk -F: -v"i=$i" '{if(NR==2){print $i}}' ./database/$dbcurr/$tbin`
 		while true
 		do
